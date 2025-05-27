@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dii4dmhxp58nj"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_88r45"]
+[ext_resource type="Texture2D" uid="uid://bp8ylueanynyk" path="res://FB/FBsprites/base.png" id="1_n0aho"]
+[ext_resource type="PackedScene" uid="uid://d1nml146b6m5w" path="res://Escenas/rigid_body_2d.tscn" id="2_hg2jc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk670"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+size = Vector2(404, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j6we"]
+resource_local_to_scene = false
+resource_name = ""
+custom_solver_bias = 0.0
+size = Vector2(390.5, 110.5)
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_88r45")
+
+[node name="tope" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tope"]
+position = Vector2(192, 10)
+shape = SubResource("RectangleShape2D_hk670")
+
+[node name="suelo" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="suelo"]
+position = Vector2(196, 602)
+scale = Vector2(1.16667, 1)
+texture = ExtResource("1_n0aho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="suelo"]
+position = Vector2(196.75, 602.25)
+shape = SubResource("RectangleShape2D_0j6we")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("2_hg2jc")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

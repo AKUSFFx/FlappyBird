@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="akubird"
-run/main_scene="res://game.tscn"
+run/main_scene="res://Escenas/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=390
+
+[global_group]
+
+player=""
 
 [input]
 
