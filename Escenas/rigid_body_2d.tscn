@@ -2,60 +2,42 @@
 
 [ext_resource type="Texture2D" uid="uid://b76otw1vipxs3" path="res://FB/FBsprites/bluebird-downflap.png" id="1_0ftv0"]
 [ext_resource type="Script" path="res://scripts/rigid_body_2d.gd" id="1_35tku"]
-[ext_resource type="Texture2D" uid="uid://ciy4kex72rq2m" path="res://FB/FBsprites/bluebird-midflap.png" id="2_qhj5m"]
 [ext_resource type="Texture2D" uid="uid://dcg1nvq7ex14x" path="res://FB/FBsprites/bluebird-upflap.png" id="3_cpxjk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nb0td"]
-atlas = ExtResource("1_0ftv0")
-region = Rect2(0, 0, 34, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ntha"]
-atlas = ExtResource("2_qhj5m")
-region = Rect2(0, 0, 34, 24)
+[ext_resource type="Texture2D" uid="uid://dfmw0n22cmgyb" path="res://FB/FBsprites/yellowbird-midflap.png" id="3_hpdpf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6voa"]
 atlas = ExtResource("3_cpxjk")
 region = Rect2(0, 0, 34, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jl4e"]
+atlas = ExtResource("3_hpdpf")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0uu6"]
+atlas = ExtResource("1_0ftv0")
+region = Rect2(0, 0, 34, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wagld"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nb0td")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ntha")
-}],
-"loop": true,
-"name": &"mid",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u6voa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jl4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0uu6")
 }],
 "loop": true,
-"name": &"up",
-"speed": 5.0
+"name": &"movimiento",
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ol55"]
 radius = 13.0384
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjb7k"]
-resource_local_to_scene = false
-resource_name = ""
-custom_solver_bias = 0.0
 size = Vector2(33.5, 26.25)
 
 [sub_resource type="GDScript" id="GDScript_v0ttn"]
@@ -67,7 +49,9 @@ script = ExtResource("1_35tku")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wagld")
-animation = &"down"
+animation = &"movimiento"
+frame = 1
+frame_progress = 0.445816
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
